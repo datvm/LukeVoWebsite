@@ -22,4 +22,9 @@
     <None Include="compilerconfig.json" />
   </ItemGroup>
 
+
+  <ItemGroup>
+    <ProjectReference Include="..\Common\LukeVo.Common\LukeVo.Common.csproj" />
+  </ItemGroup>
+
 </Project>

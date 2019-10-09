@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+    <AssemblyName>Common</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="common-settings.json" />
+    <Content Remove="compilerconfig.json" />
+    <Content Remove="Texts\texts-en.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="common-settings.json" />
+    <None Include="compilerconfig.json" />
+    <None Include="Texts\**\**">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BibliTech.Common" Version="1.0.2" />
+    <PackageReference Include="Fluint.AspNetCore" Version="1.0.3" />
+  </ItemGroup>
+
+
+</Project>

@@ -1,0 +1,57 @@
+﻿:root {
+    --background: #E6E6E6;
+    --g: #737373;
+    --b: #2B79D7;
+}
+
+html, body {
+    width: 100%;
+    min-height: 100vh;
+}
+
+body {
+    background-color: var(--background);
+    display: flex;
+    flex-direction: column;
+
+    > header {
+        padding: 15px 0;
+        margin-bottom: 100px;
+
+        a {
+            color: var(--g);
+            display: inline-block;
+            margin-right: 35px;
+
+            &:first-child {
+                color: black;
+                font-weight: bold;
+                font-size: 1.2rem;
+            }
+
+            &:hover {
+                color: var(--g);
+            }
+        }
+    }
+
+    > main {
+        flex-grow: 1;
+    }
+
+    > footer {
+        margin-top: 60px;
+        padding: 30px 0;
+        background: white;
+    }
+}
+
+
+
+
+
+@media only screen and (min-width : 1600px) {
+    .container {
+        max-width: 1590px;
+    }
+}

@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.29319.158
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LukeVo.Web", "LukeVo.Web\LukeVo.Web.csproj", "{E3B42035-A13F-4252-91FA-A180EC47C655}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{A74EAB8E-8051-4B70-A1FA-5E76EC162C62}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LukeVo.Common", "Common\LukeVo.Common\LukeVo.Common.csproj", "{6830A33E-FEDA-4DAF-8384-1DE671DA444F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,9 +19,16 @@ Global
 		{E3B42035-A13F-4252-91FA-A180EC47C655}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E3B42035-A13F-4252-91FA-A180EC47C655}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E3B42035-A13F-4252-91FA-A180EC47C655}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6830A33E-FEDA-4DAF-8384-1DE671DA444F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6830A33E-FEDA-4DAF-8384-1DE671DA444F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6830A33E-FEDA-4DAF-8384-1DE671DA444F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6830A33E-FEDA-4DAF-8384-1DE671DA444F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6830A33E-FEDA-4DAF-8384-1DE671DA444F} = {A74EAB8E-8051-4B70-A1FA-5E76EC162C62}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4F168A05-F552-471F-9D89-B2214563474C}

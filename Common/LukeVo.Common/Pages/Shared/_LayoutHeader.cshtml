@@ -1,0 +1,23 @@
+﻿@functions {
+
+    static readonly IEnumerable<(string Key, string Url)> NavLinks = new[] 
+    {
+        ("Brand", "~/"),
+        ("Resume", "https://www.lukevo.com/"),
+        ("Blog", "https://blog.lukevo.com/"),
+        ("Tools", "https://tools.lukevo.com/"),
+        ("ContactMe", "mailto:contact@lukevo.com"),
+    };
+
+}
+
+<header>
+    <div class="container">
+        <nav>
+            @foreach (var item in NavLinks)
+            {
+                <a href="@(item.Url)">@(item.Key.Lookup())</a>
+            }
+        </nav>
+    </div>
+</header>
