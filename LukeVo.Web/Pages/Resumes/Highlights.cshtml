@@ -1,0 +1,58 @@
+﻿<summary>
+    <div class="card">
+        <div class="card-header">
+            @("Highlights".Lookup())
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12 col-lg-6 text-center">
+                    <div>
+                        <h2 class="name">
+                            @("FullName".Lookup())
+                        </h2>
+                        <h3 class="job-title">@("JobTitle".Lookup())</h3>
+                        <p>@("Slogan".Lookup())</p>
+                    </div>
+
+                    <hr class="mb-3" />
+
+                    <div class="d-print-none">
+                        <p>
+                            <i class="fa fa-map-marker-alt"></i>
+                            @("Location".Lookup())
+                            <span class="badge badge-info">@("OpenToRelocation".Lookup())</span>
+                        </p>
+                        <p>
+                            
+                        </p>
+                        <p class="social-links">
+                            <a href="mailto:contact@lukevo.com" title="Email">
+                                <i class="fa fa-envelope"></i>
+                            </a>
+                            <a target="_blank" title="LinkedIn"
+                               href="https://www.linkedin.com/in/datvm/">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a target="_blank" title="StackOverflow"
+                               href="https://stackoverflow.com/users/653457/luke-vo">
+                                <i class="fab fa-stack-overflow"></i>
+                            </a>
+                            <a target="_blank" title="GitHub"
+                               href="https://github.com/datvm">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-6">
+                    <ul>
+                        @for (int i = 1; i < 5; i++)
+                        {
+                            <li>@($"HighlightItem{i}".LookupHtml())</li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</summary>

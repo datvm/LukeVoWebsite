@@ -1,2 +1,31 @@
 ﻿@page
 
+@section Heads {
+
+    <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+
+}
+
+<partial name="Resumes/Highlights" />
+
+<div class="spacer"></div>
+
+<partial name="Resumes/Reviews" />
+
+<div class="spacer"></div>
+
+<partial name="Resumes/Skills" />
+
+<div class="spacer"></div>
+
+<partial name="Resumes/Experience" />
+
+<div class="spacer"></div>
+
+<partial name="Resumes/Certifications" />
+
+@section Scripts {
+
+    <script defer src="~/js/home.js"></script>
+
+}

@@ -3,6 +3,7 @@
         <div class="row">
             <div class="col">
                 <p>@("Footer_DesignBy".Lookup())</p>
+                <p>@("Footer_PoweredBy".LookupHtml())</p>
                 <p>
                     @("Footer_SourceCode".Lookup())
                     <a target="_blank" href="https://github.com/datvm/LukeVoWebsite">
@@ -10,12 +11,11 @@
                     </a>.
                 </p>
             </div>
-            <div class="col text-right">
+            <div class="col text-right d-print-none">
                 <a href="mailto:contact@lukevo.com">
-                    <i class="fa fa-envelope"></i> Contact Me
+                    <i class="fa fa-envelope"></i> @("ContactMe".Lookup())
                 </a>
             </div>
         </div>
-        
     </div>
 </footer>

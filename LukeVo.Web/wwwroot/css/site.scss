@@ -1,2 +1,178 @@
-﻿body {
+﻿summary {
+    .name {
+        font-size: 1.2rem;
+    }
+
+    .job-title {
+        font-size: 1rem;
+        color: var(--g);
+    }
+
+    hr {
+        margin-bottom: 1rem;
+    }
+
+    .fa-map-marker-alt {
+        color: red;
+    }
+
+    .social-links {
+        font-size: 2.5rem;
+
+        a {
+            margin: 0 15px;
+            text-decoration: none;
+        }
+
+        .fa-linkedin {
+            color: #2877B7;
+        }
+
+        .fa-stack-overflow {
+            color: #EC7F0C;
+        }
+
+        .fa-github {
+            color: black;
+        }
+    }
+
+    ul > li:before {
+        content: "✓";
+    }
+}
+
+ul {
+    position: relative;
+    list-style: none;
+    padding-left: 1.2em;
+    margin: 0;
+
+    > li {
+        &:before {
+            left: 0;
+            content: "★";
+            display: block;
+            width: 1.2em;
+            position: absolute;
+        }
+    }
+
+    ul > li:before {
+        content: "•";
+    }
+}
+
+.fa-star {
+    color: #67bc1d;
+}
+
+.spacer {
+    margin-bottom: 2rem;
+}
+
+.card-column {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    grid-auto-rows: 1fr;
+    grid-gap: 30px;
+
+    .card {
+        height: 100%;
+        margin-bottom: 0;
+
+        .card-quote {
+            margin-left: 30px;
+            padding: 30px;
+            padding-bottom: 50px;
+            font-weight: normal;
+
+            &:before {
+                content: "‟";
+                position: absolute;
+                left: 30px;
+                font-size: 75px;
+                color: #000;
+                font-family: Arial;
+                color: var(--g);
+                top: 0;
+            }
+
+            .source {
+                display: block;
+                text-align: right;
+                color: var(--g);
+                position: absolute;
+                bottom: 15px;
+                right: 15px;
+
+                a {
+                    color: var(--g);
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+
+    > .highlight {
+        grid-column: span 2;
+    }
+}
+
+.section-header {
+    margin-bottom: 30px;
+
+    .section-header-line {
+        border-top: 8px solid var(--b);
+        margin-bottom: 20px;
+    }
+
+    h3 {
+        color: var(--b);
+        font-size: 2rem;
+    }
+}
+
+.experience-tree {
+    position: relative;
+
+    .experience-tree-divider {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        bottom: 0;
+        transform: translateX(-50%);
+        border-left: 3px solid var(--b);
+    }
+
+    .experience-time {
+        font-size: 1.5rem;
+        color: var(--b);
+    }
+
+    .card {
+        margin-bottom: 2rem;
+
+        .card-header {
+            .job-company {
+                text-transform: none;
+                letter-spacing: normal;
+            }
+        }
+
+        .card-body {
+            padding: 1rem;
+
+            .short-description {
+                color: var(--g);
+                font-weight: normal;
+            }
+        }
+    }
+}
+
+.cert {
+    img.img-cert {
+        max-height: 200px;
+    }
 }

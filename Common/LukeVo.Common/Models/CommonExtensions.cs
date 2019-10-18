@@ -40,6 +40,7 @@ namespace Microsoft.Extensions.DependencyInjection
                 var textsPath = Path.Combine(assemblyPath, "Texts");
 
                 builder
+                    .AddJsonFiles(textsPath, "common-")
                     .AddJsonFiles(textsPath, "texts-")
                     .SetFallbackLanguage("en");
             });

@@ -9,7 +9,7 @@
   <ItemGroup>
     <Content Remove="common-settings.json" />
     <Content Remove="compilerconfig.json" />
-    <Content Remove="Texts\texts-en.json" />
+    <Content Remove="Texts\common-en.json" />
   </ItemGroup>
 
   <ItemGroup>

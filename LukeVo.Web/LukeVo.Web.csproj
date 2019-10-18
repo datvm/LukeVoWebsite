@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <Content Remove="compilerconfig.json" />
+    <Content Remove="Texts\texts-en.json" />
   </ItemGroup>
 
   <ItemGroup>
@@ -14,12 +15,10 @@
 
 
   <ItemGroup>
-    <Folder Include="wwwroot\js\" />
-  </ItemGroup>
-
-
-  <ItemGroup>
     <None Include="compilerconfig.json" />
+    <None Include="Texts\texts-en.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 

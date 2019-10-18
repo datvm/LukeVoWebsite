@@ -1,0 +1,75 @@
+﻿<section id="section-certifications">
+    <div class="section-header">
+        <div class="col-lg-4 col-md-6">
+            <div class="section-header-line"></div>
+            <h2>@("Cert_Title".Lookup())</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col cert">
+
+            <div class="card">
+                <div class="card-header">
+                    <p>
+                        <a href="https://www.youracclaim.com/badges/93dc420e-7f5b-49d8-bbc4-c0fa6b847523/public_url" target="_blank">
+                            @("Cert_MCSD_Title".Lookup())
+                        </a>
+                    </p>
+                    <p class="card-header-description">@("Cert_MCSD_IssueTime".Lookup())</p>
+                </div>
+                <div class="card-body">
+                    <p class="text-center">
+                        <a href="https://www.youracclaim.com/badges/93dc420e-7f5b-49d8-bbc4-c0fa6b847523/public_url" target="_blank">
+                            <img class="img-cert" src="~/img/mcsd-app-builder.png" asp-append-version="true" />
+                        </a>
+                    </p>
+                </div>
+                <div class="card-body">
+                    <ul class="list-experience text-left">
+                        @for (int i = 0; i < 3; i++)
+                        {
+                            <li>@($"Cert_MCSD_Exam{i}".Lookup())</li>
+                        }
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card h-100">
+                <div class="card-header">
+                    <p>
+                        <a target="_blank" href="http://international.fpt.edu.vn">
+                            @("Cert_Fpt_Title".Lookup())
+                        </a>
+                    </p>
+                    <p class="card-header-description">
+                        @("Cert_Fpt_Subtitle".Lookup())
+                    </p>
+                </div>
+                <div class="card-body">
+                    <p class="short-description">
+                        @("Cert_Fpt_Desc".Lookup())
+                    </p>
+                    <ul class="list-experience">
+                        @for (int i = 0; i < 4; i++)
+                        {
+                            <li>@($"Cert_Fpt_Score{i}".LookupHtml())</li>
+                        }
+                    </ul>
+                </div>
+                <hr />
+                <div class="card-body">
+                    <ul class="list-experience">
+                        @for (int i = 0; i < 3; i++)
+                        {
+                            <li>@($"Cert_Fpt_Exp{i}".LookupHtml())</li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

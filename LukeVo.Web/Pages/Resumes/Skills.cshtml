@@ -1,0 +1,68 @@
+﻿@functions {
+
+    static readonly int[] SkillItemCounts = new[]
+    {
+        5, 6, 2, 3, 4
+    };
+
+}
+
+<section id="section-skills">
+    <div class="section-header">
+        <div class="col-lg-4 col-md-6">
+            <div class="section-header-line"></div>
+            <h2>@("Skills_Header".Lookup())</h2>
+        </div>
+    </div>
+
+    <div class="card highlight">
+        <div class="card-header">
+            @("SkillProduction_Title".Lookup())
+            <p class="card-header-description">@("SkillProduction_Subtitle".Lookup())</p>
+        </div>
+        <div class="card-body">
+            <ul>
+                @for (int i = 0; i < SkillItemCounts.Length; i++)
+                {
+                    var itemCount = SkillItemCounts[i];
+
+                    <li>
+                        <p>@($"Skill_Item{i}_Title".LookupHtml())</p>
+                        <ul>
+                            @for (int j = 0; j < itemCount; j++)
+                            {
+                                <li>
+                                    <p>@($"Skill_Item{i}_{j}".LookupHtml())</p>
+                                </li>
+                            }
+                        </ul>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+
+    <div class="spacer"></div>
+
+    <div class="card">
+        <div class="card-header">
+            @("SkillResearch_Title".Lookup())
+            <p class="card-header-description">@("SkillResearch_Subtitle".Lookup())</p>
+        </div>
+        <div class="card-body">
+            <ul>
+                <li>DevOps-related technologies: Docker and Kubernetes.</li>
+                <li>Micro-service approach.</li>
+                <li>NoSQL DBMS and cache: MongoDB and Redis.</li>
+                <li>Python programming with Django.</li>
+                <li>LUA programming (mostly for game modding and developing).</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="spacer"></div>
+
+    <div class="d-print-none"><p>@("Skill_Showcase".LookupHtml())</p></div>
+    <div class="d-none d-print-block"><p>@("Skill_Showcase_Print".LookupHtml())</p></div>
+    
+</section>

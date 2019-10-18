@@ -23,7 +23,7 @@ body {
             display: inline-block;
             margin-right: 35px;
 
-            &:first-child {
+            h1 {
                 color: black;
                 font-weight: bold;
                 font-size: 1.2rem;
@@ -46,9 +46,40 @@ body {
     }
 }
 
+.card {
+    background: white;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px, rgba(0, 0, 0, 0.05) 0px 0.5px 1px;
+    transition: all 0.333s ease-out;
+    cursor: default;
 
+    &:hover {
+        transform: translate3d(0px, -1px, 0px);
+        box-shadow: rgba(0, 0, 0, 0.22) 0px 19px 43px, rgba(0, 0, 0, 0.18) 0px 4px 11px;
+    }
 
+    hr {
+        margin: 0;
+    }
 
+    > .card-header {
+        background: white;
+        text-transform: uppercase;
+        color: var(--g);
+        font-size: .8rem;
+        letter-spacing: .3em;
+        font-weight: lighter;
+
+        .card-header-description {
+            text-transform: none;
+            letter-spacing: normal;
+        }
+    }
+
+    p {
+        margin: 0;
+    }
+}
 
 @media only screen and (min-width : 1600px) {
     .container {

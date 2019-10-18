@@ -1,0 +1,87 @@
+﻿@functions {
+
+    static readonly int[] ItemCounts = new[]
+    {
+        6, 5, 3, 3,
+    };
+
+    static readonly string[] CompanyUrls = new[]
+    {
+        "https://www.upwork.com/freelancers/~01604feebad76541a5",
+        "http://wisky.vn/",
+        "https://www.kymdan.com/",
+        "http://divmob.com/",
+    };
+}
+
+<section id="section-experience">
+    <div class="section-header">
+        <div class="col-lg-4 col-md-6">
+            <div class="section-header-line"></div>
+            <h2>@("Experience_Title".Lookup())</h2>
+        </div>
+    </div>
+
+    <div class="experience-tree">
+        <div class="experience-tree-divider"></div>
+
+        @for (int i = 0; i < ItemCounts.Length; i++)
+        {
+            var itemCount = ItemCounts[i];
+            var time = $"Experience_{i}_Time".Lookup();
+
+            <div class="row no-print-break">
+
+                @if (i % 2 == 0)
+                {
+                    <div class="col-lg-6 text-right experience-time">
+                        @(time)
+                    </div>
+                }
+                else
+                {
+                    <div class="d-lg-none col-lg-6 text-left experience-time">
+                        @(time)
+                    </div>
+                }
+
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <p>@($"Experience_{i}_Title".Lookup())</p>
+                            <p class="job-company">
+                                <a target="_blank" href="@(CompanyUrls[i])">
+                                    @($"Experience_{i}_Subtitle".Lookup())
+                                </a>
+                            </p>
+                        </div>
+                        <div class="card-body">
+                            <p class="col short-description">
+                                @($"Experience_{i}_ShortDesc".LookupHtml())
+                            </p>
+                        </div>
+                        <hr />
+                        <div class="card-body">
+                            <ul data-simple class="list-experience">
+                                @for (int j = 0; j < itemCount; j++)
+                                {
+                                    <li>
+                                        @($"Experience_{i}_Item{j}".LookupHtml())
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                @if (i % 2 != 0)
+                {
+                    <div class="d-none d-lg-block visible-lg col-lg-6 text-left experience-time">
+                        @(time)
+                    </div>
+                }
+
+            </div>
+        }
+    </div>
+</section>
