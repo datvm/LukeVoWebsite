@@ -51,11 +51,10 @@
         </div>
         <div class="card-body">
             <ul>
-                <li>DevOps-related technologies: Docker and Kubernetes.</li>
-                <li>Micro-service approach.</li>
-                <li>NoSQL DBMS and cache: MongoDB and Redis.</li>
-                <li>Python programming with Django.</li>
-                <li>LUA programming (mostly for game modding and developing).</li>
+                @for (int i = 0; i < 5; i++)
+                {
+                    <li>@($"Skill_Research{i}".Lookup())</li>
+                }
             </ul>
         </div>
     </div>

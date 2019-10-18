@@ -5,7 +5,8 @@
         "netcore": "https://dotnet.microsoft.com/download/dotnet-core",
         "github": "https://github.com/datvm",
         "restsharp": "https://github.com/restsharp/RestSharp",
-        "shopifysharp": "https://github.com/nozzlegear/ShopifySharp"
+        "shopifysharp": "https://github.com/nozzlegear/ShopifySharp",
+        "upwork": "https://www.upwork.com/o/profiles/users/_~01604feebad76541a5/",
     };
 
     init() {

@@ -30,11 +30,11 @@
             var itemCount = ItemCounts[i];
             var time = $"Experience_{i}_Time".Lookup();
 
-            <div class="row no-print-break">
+            <div class="row experience-item">
 
                 @if (i % 2 == 0)
                 {
-                    <div class="col-lg-6 text-right experience-time">
+                    <div class="col-lg-6 text-right text-print-left experience-time">
                         @(time)
                     </div>
                 }

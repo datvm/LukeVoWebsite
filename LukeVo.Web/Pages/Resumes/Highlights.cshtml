@@ -1,4 +1,24 @@
-﻿<summary>
+﻿@functions {
+
+    class SocialItem
+    {
+        public string FaClass { get; set; }
+        public string Href { get; set; }
+        public string Name { get; set; }
+        public string HrefPrint { get; set; }
+    }
+
+    static SocialItem[] SocialItems = new[]
+    {
+        new SocialItem { FaClass = "fa fa-envelope", Href = "mailto:contact@lukevo.com", Name = "Email", HrefPrint = "contact@lukevo.com", },
+        new SocialItem { FaClass = "fab fa-linkedin", Href = "https://www.linkedin.com/in/datvm/", Name = "LinkedIn", HrefPrint = "/in/datvm", },
+        new SocialItem { FaClass = "fab fa-stack-overflow", Href = "https://stackoverflow.com/users/653457/luke-vo", Name = "StackOverflow", HrefPrint = "/users/653457/luke-vo", },
+        new SocialItem { FaClass = "fab fa-github", Href = "https://github.com/datvm", Name = "GitHub", HrefPrint = "/datvm", },
+    };
+
+}
+
+<summary>
     <div class="card">
         <div class="card-header">
             @("Highlights".Lookup())
@@ -23,25 +43,44 @@
                             <span class="badge badge-info">@("OpenToRelocation".Lookup())</span>
                         </p>
                         <p>
-                            
+
                         </p>
                         <p class="social-links">
-                            <a href="mailto:contact@lukevo.com" title="Email">
-                                <i class="fa fa-envelope"></i>
-                            </a>
-                            <a target="_blank" title="LinkedIn"
-                               href="https://www.linkedin.com/in/datvm/">
-                                <i class="fab fa-linkedin"></i>
-                            </a>
-                            <a target="_blank" title="StackOverflow"
-                               href="https://stackoverflow.com/users/653457/luke-vo">
-                                <i class="fab fa-stack-overflow"></i>
-                            </a>
-                            <a target="_blank" title="GitHub"
-                               href="https://github.com/datvm">
-                                <i class="fab fa-github"></i>
-                            </a>
+                            @foreach (var item in SocialItems)
+                            {
+                                <a target="_blank" href="@(item.Href)" title="@(item.Name)">
+                                    <i class="@(item.FaClass)"></i>
+                                </a>
+                            }
                         </p>
+                    </div>
+
+                    <div class="d-none d-print-block">
+                        <div class="row">
+                            <div class="col text-center">
+                                <a href="https://www.lukevo.com/">
+                                    <p>
+                                        @("WebVersion".Lookup())
+                                    </p>
+                                    <p>
+                                        <img class="img-qr" src="~/img/qr-resume.png" asp-append-version="true" />
+                                    </p>
+                                    <p>https://www.lukevo.com/</p>
+                                </a>
+                            </div>
+                            <div class="col text-left social-links">
+                                @foreach (var item in SocialItems)
+                                {
+                                    <p>
+                                        <i class="@(item.FaClass)"></i>
+                                        <span>@(item.Name):</span>
+                                        <a href="@(item.Href)">
+                                            @(item.HrefPrint)
+                                        </a>
+                                    </p>
+                                }
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-12 col-lg-6">

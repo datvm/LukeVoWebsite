@@ -1,3 +1,11 @@
 ﻿{
-    "Title": "Luke Vo - Kỹ sư phần mềm, Lập trình phần mềm"
+    "Title": "Luke Vo - Kỹ sư phần mềm, Lập trình phần mềm",
+    "Brand": "Luke Vo",
+    "Resume": "CV",
+    "Blog": "Blog",
+    "Tools": "Công cụ",
+    "ContactMe": "Liên hệ",
+    "Footer_DesignBy": "Thiết kế theo cảm hứng của Microsoft Design.",
+    "Footer_SourceCode": "Mã nguồn mở tại",
+    "Footer_PoweredBy": "Chạy trên Windows Server, IIS, <a data-href='netcore' target='_blank'>.NET Core 3.0</a>"
 }
