@@ -49,8 +49,8 @@ namespace LukeVo.Web
             app.UseStaticFiles();
 
             app.UseRouting();
-
             app.UseAuthorization();
+            app.UseI18n();
 
             app.UseEndpoints(endpoints =>
             {

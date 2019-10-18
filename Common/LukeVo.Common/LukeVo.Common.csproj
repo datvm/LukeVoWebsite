@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="common-settings.json" />
     <Content Remove="compilerconfig.json" />
     <Content Remove="Texts\common-en.json" />
   </ItemGroup>
@@ -17,7 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="common-settings.json" />
     <None Include="compilerconfig.json" />
     <None Include="Texts\**\**">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

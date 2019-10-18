@@ -11,15 +11,21 @@
 
 <header class="d-print-none">
     <div class="container">
-        <nav>
-            <a href="https://www.lukevo.com/">
-                <h1>@("Brand".Lookup())</h1>
-            </a>
+        <div class="d-flex">
+            <nav>
+                <a href="https://www.lukevo.com/">
+                    <h1>@("Brand".Lookup())</h1>
+                </a>
 
-            @foreach (var item in NavLinks)
-            {
-                <a href="@(item.Url)">@(item.Key.Lookup())</a>
-            }
-        </nav>
+                @foreach (var item in NavLinks)
+                {
+                    <a href="@(item.Url)">@(item.Key.Lookup())</a>
+                }
+            </nav>
+            <div class="mx-auto"></div>
+            
+            <partial name="_LanguageSelector" />
+        </div>
+        
     </div>
 </header>

@@ -23,7 +23,7 @@
 
     @await this.RenderSectionAsync("Heads", false)
 </head>
-<body>
+<body lang="@(System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName)">
 
     <partial name="_LayoutHeader" />
 
@@ -35,6 +35,7 @@
 
     <partial name="_LayoutFooter" />
 
+    <partial name="_CommonScripts" />
     @await this.RenderSectionAsync("Scripts", false)
 
 </body>

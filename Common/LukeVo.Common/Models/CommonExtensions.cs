@@ -5,6 +5,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Text;
+using System.Linq;
+using System.Globalization;
+using Microsoft.AspNetCore.Http;
 
 namespace System
 {
@@ -58,6 +61,75 @@ namespace Microsoft.Extensions.DependencyInjection
             services.AddSingleton(settings);
 
             return settings;
+        }
+
+    }
+
+}
+
+namespace Microsoft.AspNetCore.Builder
+{
+
+    public static class AspNetAppCommonExtensions
+    {
+
+        public static IApplicationBuilder UseI18n(this IApplicationBuilder app)
+        {
+            app.Use(async (context, next) =>
+            {
+                // Check if language is being forced
+                CultureInfo current = null;
+                var languageQuery = context.Request.Query["language"];
+                if (languageQuery.Any())
+                {
+                    current = TryParseOrNull(languageQuery[0]);
+                }
+
+                // From cookie
+                if (current == null)
+                {
+                    var languageCookie = context.Request.Cookies["language"];
+                    if (languageCookie != null)
+                    {
+                        current = TryParseOrNull(languageCookie);
+                    }
+                }
+                
+                // From Accept-Language header
+                if (current == null)
+                {
+                    var languageHeader = context.Request.GetTypedHeaders().AcceptLanguage
+                        .OrderByDescending(q => q.Quality)
+                        .FirstOrDefault();
+
+                    if (languageHeader != null)
+                    {
+                        current = TryParseOrNull(languageHeader.Value.Value);
+                    }
+                }
+
+                if (current != null)
+                {
+                    CultureInfo.CurrentUICulture = current;
+                    context.Response.Cookies.Append("language", current.TwoLetterISOLanguageName);
+                }
+                
+                await next.Invoke();
+            });
+
+            return app;
+        }
+
+        static CultureInfo TryParseOrNull(string code)
+        {
+            try
+            {
+                return CultureInfo.GetCultureInfo(code);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
         }
 
     }
