@@ -80,7 +80,7 @@
         this.showFileList();
     }
 
-    showFileList() {
+    async showFileList() {
         const lst = this.lstPreview;
 
         lst.innerHTML = "";
@@ -89,7 +89,7 @@
         for (let file of this.selectingFiles) {
             const img = document.createElement("img");
             const url = img.src = URL.createObjectURL(file);
-
+            
             file.index = counter;
             file.url = url;
             img.setAttribute("data-index", counter);
@@ -98,15 +98,29 @@
             this.lstPreview.append(img);
         }
 
-        this.setMainImage(0);
+        this.setMainImageAsync(0);
         this.setPreviewActive(0);
 
         this.pnlSelectPrompt.classList.add("d-none");
         this.pnlOptions.classList.remove("d-none");
     }
 
+    async readFileAsync(file) {
+        return await new Promise((resolve, reject) => {
+            let reader = new FileReader();
+
+            reader.onload = () => {
+                resolve(reader.result);
+            };
+
+            reader.onerror = reject;
+
+            reader.readAsDataURL(file);
+        });
+    }
+
     onSlideShowStartButtonClick() {
-        this.setMainImage(0);
+        this.setMainImageAsync(0);
 
         this.showSlideShow();
     }
@@ -125,7 +139,7 @@
         target.classList.add("active");
 
         let index = Number(target.getAttribute("data-index"));
-        this.setMainImage(index);
+        this.setMainImageAsync(index);
     }
 
     onSortCommandClick(_, target) {
@@ -161,7 +175,7 @@
         });
     }
 
-    setMainImage(index) {
+    async setMainImageAsync(index) {
         if (index == this.showingIndex) {
             return;
         }
@@ -169,7 +183,20 @@
         this.showingIndex = index;
         let file = this.selectingFiles[index];
 
-        this.imgMain.style.backgroundImage = `url(${file.url})`;
+        if (!file.cache) {
+            await this.cacheAsync(index);
+        }
+
+        this.imgMain.style.backgroundImage = `url(${file.cache})`;
+
+        // Cache the next and previous, do NOT await here
+        if (index > 0) {
+            this.cacheAsync(index - 1);
+        }
+
+        if (index < this.selectingFiles.length - 1) {
+            this.cacheAsync(index + 1);
+        }
     }
 
     setPreviewActive(index) {
@@ -207,7 +234,17 @@
             next = this.selectingFiles.length - 1;
         }
 
-        this.setMainImage(next);
+        this.setMainImageAsync(next);
+    }
+
+    async cacheAsync(index) {
+        let file = this.selectingFiles[index];
+
+        if (file.cache) {
+            return;
+        }
+
+        file.cache = await this.readFileAsync(file);
     }
 
     isFullScreen() {
