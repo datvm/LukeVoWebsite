@@ -1,0 +1,52 @@
+﻿@page
+
+@{
+    this.Layout = "_Layout_Empty";
+    this.ViewBag.Title = "Presentation_Title".Lookup();
+}
+
+@section Heads {
+
+    <link rel="stylesheet" href="~/apps/presentation/css/main.min.css" asp-append-version="true" />
+
+}
+
+<main class="container-fluid">
+    <section id="pnl-select-prompt">
+        <p class="text-center mt-5">
+            @("Presentation_OpenPrompt".Lookup())
+        </p>
+    </section>
+    <section id="pnl-options" class="container d-none">
+        <div id="pnl-sorts" class="form-group">
+            <span>@("Presentation_SortBy".Lookup()):</span>
+            <button class="btn btn-link" data-sort-by="name">@("Presentation_SortBy_Name".Lookup())</button>
+            <span class="mx-1">|</span>
+            <button class="btn btn-link" data-sort-by="lastModified">@("Presentation_SortBy_ModifiedTime".Lookup())</a>
+        </div>
+        <div class="form-group">
+            <div id="lst-preview" class="preview">
+                <img />
+            </div>
+        </div>
+        <div class="form-group">
+            <button id="btn-slideshow-start" class="btn btn-primary">
+                @("Presentation_ShowFromStart".Lookup())
+            </button>
+            <button id="btn-slideshow-start-current" class="btn btn-primary">
+                @("Presentation_ShowFromCurrent".Lookup())
+            </button>
+        </div>
+    </section>
+    <section id="pnl-presentation" class="screen">
+        <img id="img-main" />
+    </section>
+</main>
+
+<input id="txt-files" type="file" multiple style="display:none;" accept="image/*" />
+
+@section Scripts {
+
+    <script defer src="~/apps/presentation/js/main.js" asp-append-version="true"></script>
+
+}

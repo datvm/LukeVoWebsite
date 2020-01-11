@@ -29,6 +29,18 @@
 
 }
 
+HTMLElement.prototype.addDelegate = function (eventName, cssMatch, callback) {
+    this.addEventListener(eventName, function (e) {
+        for (let target = e.target; target && target != this; target = target.parentNode) {
+            if (target.matches(cssMatch)) {
+                callback(e, target);
+
+                break;
+            }
+        }
+    });
+};
+
 (() => {
     Language.init();
 })();

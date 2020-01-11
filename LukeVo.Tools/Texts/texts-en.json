@@ -1,4 +1,12 @@
 ﻿{
-    "Home_Title": "Tools and Showcases by Luke Vo"
+    "Home_Title": "Tools and Showcases by Luke Vo",
 
+    "Presentation_Title": "Presentation",
+    "Presentation_ShortDesc": "Online image presentation viewer",
+    "Presentation_OpenPrompt": "Press Ctrl + O to select files",
+    "Presentation_SortBy": "Sort By",
+    "Presentation_SortBy_Name": "File Name",
+    "Presentation_SortBy_ModifiedTime": "Modified Time",
+    "Presentation_ShowFromStart": "Show from Start",
+    "Presentation_ShowFromCurrent": "Show from Current Slide"
 }

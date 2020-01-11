@@ -1,0 +1,32 @@
+﻿@{
+    var title = this.ViewBag.Title ?? "Title".Lookup();
+    var metaDesc = this.ViewBag.MetaDesc;
+}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    @if (metaDesc != null)
+    {
+        <meta name="description" content="@(metaDesc)" />
+    }
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>@(title)</title>
+
+    <link rel="stylesheet" href="~/_content/Common/css/common.min.css" asp-append-version="true" />
+
+    @await this.RenderSectionAsync("Heads", false)
+</head>
+<body lang="@(System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName)">
+    @this.RenderBody()
+
+    <partial name="_CommonScripts" />
+    @await this.RenderSectionAsync("Scripts", false)
+</body>
+</html>
