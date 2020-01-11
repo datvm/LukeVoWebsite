@@ -1,30 +1,43 @@
-﻿.preview {
+﻿.container-options {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
     width: 100%;
-    padding: 10px;
-    overflow-x: scroll;
-    white-space: nowrap;
 
-    img {
-        cursor: pointer;
-        height: 200px;
-        border: 3px solid transparent;
-        transition: all ease-in-out .25s;
-        padding: 5px;
+    .preview {
+        width: 100%;
+        padding: 10px;
+        overflow-y: auto;
+        text-align: center;
 
-        &.active {
-            border-color: cornflowerblue;
+        img {
+            cursor: pointer;
+            height: 200px;
+            border: 3px solid transparent;
+            transition: all ease-in-out .25s;
+            padding: 2px;
+            margin: 5px;
+
+            &.active {
+                border-color: cornflowerblue;
+            }
         }
     }
 }
 
+
 .screen {
     position: relative;
 
-    img {
+    .main {
         position: absolute;
         left: 0;
         top: 0;
         width: 100%;
         height: 100%;
+        cursor: none;
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
     }
 }

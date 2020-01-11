@@ -11,9 +11,26 @@
 
     initialize() {
         document.addEventListener("keydown", (e) => {
+            let shouldPreventDF = true;
+
             if (e.ctrlKey && e.keyCode == 79) {
-                e.preventDefault();
                 this.selectFiles();
+            } else if (e.keyCode == 39 || e.keyCode == 40) {
+                this.onArrowKeyTap(true);
+            } else if (e.keyCode == 37 || e.keyCode == 38) {
+                this.onArrowKeyTap(false);
+            } else if (e.keyCode == 116) {
+                if (e.shiftKey) {
+                    this.onSlideShowStartCurrentButtonClick();
+                } else {
+                    this.onSlideShowStartButtonClick();
+                }
+            } else {
+                shouldPreventDF = false;
+            }
+
+            if (shouldPreventDF) {
+                e.preventDefault();
             }
         });
 
@@ -36,6 +53,14 @@
 
         this.imgMain.addEventListener("click",
             () => this.proceed(1));
+    }
+
+    onArrowKeyTap(shouldGoNext) {
+        if (!this.isFullScreen()) {
+            return;
+        }
+
+        this.proceed(shouldGoNext ? 1 : -1);
     }
 
     selectFiles() {
@@ -65,11 +90,6 @@
             const img = document.createElement("img");
             const url = img.src = URL.createObjectURL(file);
 
-            if (counter == 0) {
-                img.classList.add("active");
-                this.imgMain.src = img.src;
-            }
-
             file.index = counter;
             file.url = url;
             img.setAttribute("data-index", counter);
@@ -77,6 +97,9 @@
 
             this.lstPreview.append(img);
         }
+
+        this.setMainImage(0);
+        this.setPreviewActive(0);
 
         this.pnlSelectPrompt.classList.add("d-none");
         this.pnlOptions.classList.remove("d-none");
@@ -93,7 +116,12 @@
     }
 
     onPreviewImageClick(_, target) {
-        this.lstPreview.querySelector(".active").classList.remove("active");
+        let currActive = this.lstPreview.querySelector(".active");
+
+        if (currActive) {
+            currActive.classList.remove("active");
+        }
+        
         target.classList.add("active");
 
         let index = Number(target.getAttribute("data-index"));
@@ -141,7 +169,7 @@
         this.showingIndex = index;
         let file = this.selectingFiles[index];
 
-        this.imgMain.src = file.url;
+        this.imgMain.style.backgroundImage = `url(${file.url})`;
     }
 
     setPreviewActive(index) {
@@ -151,6 +179,10 @@
     }
 
     async showSlideShow() {
+        if (this.isFullScreen()) {
+            return;
+        }
+
         try {
             await this.pnlPresentation.requestFullscreen();
         } catch (e) {
@@ -160,7 +192,9 @@
     }
 
     onFullScreenLeft() {
-        this.setPreviewActive(this.showingIndex);
+        if (!this.isFullScreen()) {
+            this.setPreviewActive(this.showingIndex);
+        }
     }
 
     proceed(delta) {
@@ -174,6 +208,10 @@
         }
 
         this.setMainImage(next);
+    }
+
+    isFullScreen() {
+        return document.fullscreenElement;
     }
 
 }
