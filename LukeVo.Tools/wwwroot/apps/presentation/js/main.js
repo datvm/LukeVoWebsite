@@ -76,7 +76,7 @@
 
         this.txtFiles.value = "";
 
-        this.sortFiles("name", true);
+        this.sortFiles("powerpoint", true);
         this.showFileList();
     }
 
@@ -94,6 +94,8 @@
             file.url = url;
             img.setAttribute("data-index", counter);
             counter++;
+
+            img.title = file.name;
 
             this.lstPreview.append(img);
         }
@@ -156,16 +158,50 @@
             this.sortAsc = !this.sortAsc;
         }
 
-        let asc = this.sortAsc;
+        const compareByNameFunc = (a, b) => {
+            if (a.name == b.name) {
+                return 0;
+            } else if (a.name < b.name) {
+                return -1;
+            } else {
+                return 1;
+            }
+        };
+        let compareFunc = compareByNameFunc;
+
+        switch (by) {
+            case "lastModified":
+                compareFunc = (a, b) => {
+                    if (a.lastModified == b.lastModified) {
+                        return 0;
+                    } else if (a.lastModified < b.lastModified) {
+                        return -1;
+                    } else {
+                        return 1;
+                    }
+                };
+
+                break;
+            case "powerpoint":
+                compareFunc = (a, b) => {
+                    try {
+                        let nameA = this.getPowerPointNumFromFileName(a.name);
+                        let nameB = this.getPowerPointNumFromFileName(b.name);
+
+                        return nameA - nameB;
+                    } catch (e) {
+                        // Fallback to name
+                        return compareByNameFunc(a, b);
+                    }
+                };
+
+                break;
+        }
+
+        const asc = this.sortAsc;
         this.sortingAttr = by;
         this.selectingFiles = this.selectingFiles.sort((a, b) => {
-            let result = 0;
-
-            if (a[by] > b[by]) {
-                result = 1;
-            } else {
-                result = -1;
-            }
+            let result = compareFunc(a, b);
 
             if (!asc) {
                 result = -result;
@@ -173,6 +209,23 @@
 
             return result;
         });
+    }
+
+    getPowerPointNumFromFileName(fullName) {
+        let name = this.getFileName(fullName);
+        name = name.substr(5); // Remove "Slide" prefix
+
+        return parseInt(name);
+    }
+
+    getFileName(fullName) {
+        let lastDot = fullName.lastIndexOf(".");
+
+        if (lastDot == -1) {
+            return fullName;
+        } else {
+            return fullName.substr(0, lastDot);
+        }
     }
 
     async setMainImageAsync(index) {

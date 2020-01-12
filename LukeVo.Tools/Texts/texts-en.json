@@ -5,6 +5,7 @@
     "Presentation_ShortDesc": "Online image presentation viewer",
     "Presentation_OpenPrompt": "Press Ctrl + O to select files",
     "Presentation_SortBy": "Sort By",
+    "Presentation_SortBy_PowerPoint": "PowerPoint Export",
     "Presentation_SortBy_Name": "File Name",
     "Presentation_SortBy_ModifiedTime": "Modified Time",
     "Presentation_ShowFromStart": "Show from Start",

@@ -20,6 +20,8 @@
     <section id="pnl-options" class="container container-options d-none">
         <div id="pnl-sorts" class="form-group">
             <span>@("Presentation_SortBy".Lookup()):</span>
+            <button class="btn btn-link" data-sort-by="powerpoint">@("Presentation_SortBy_PowerPoint".Lookup())</button>
+            <span class="mx-1">|</span>
             <button class="btn btn-link" data-sort-by="name">@("Presentation_SortBy_Name".Lookup())</button>
             <span class="mx-1">|</span>
             <button class="btn btn-link" data-sort-by="lastModified">@("Presentation_SortBy_ModifiedTime".Lookup())</button>
