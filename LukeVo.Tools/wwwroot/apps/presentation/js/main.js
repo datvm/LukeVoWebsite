@@ -15,10 +15,10 @@
 
             if (e.ctrlKey && e.keyCode == 79) {
                 this.selectFiles();
-            } else if (e.keyCode == 39 || e.keyCode == 40) {
-                this.onArrowKeyTap(true);
+            } else if (e.keyCode == 39 || e.keyCode == 40 || e.keyCode == 13 || e.keyCode == 32) {
+                this.onNavigationKeyPressed(true);
             } else if (e.keyCode == 37 || e.keyCode == 38) {
-                this.onArrowKeyTap(false);
+                this.onNavigationKeyPressed(false);
             } else if (e.keyCode == 116) {
                 if (e.shiftKey) {
                     this.onSlideShowStartCurrentButtonClick();
@@ -55,7 +55,7 @@
             () => this.proceed(1));
     }
 
-    onArrowKeyTap(shouldGoNext) {
+    onNavigationKeyPressed(shouldGoNext) {
         if (!this.isFullScreen()) {
             return;
         }
