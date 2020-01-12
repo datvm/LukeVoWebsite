@@ -37,12 +37,14 @@
         this.txtFiles.addEventListener("change",
             () => this.onFileSelected());
 
+        document.querySelector("#btn-open").addEventListener("click",
+            () => this.selectFiles());
         document.querySelector("#btn-slideshow-start").addEventListener("click",
             () => this.onSlideShowStartButtonClick());
         document.querySelector("#btn-slideshow-start-current").addEventListener("click",
             () => this.onSlideShowStartCurrentButtonClick());
 
-        this.lstPreview.addDelegate("click", "img",
+        this.lstPreview.addDelegate("click", ".img",
             (e, target) => this.onPreviewImageClick(e, target));
 
         document.querySelector("#pnl-sorts").addDelegate("click", "[data-sort-by]",
@@ -87,8 +89,11 @@
 
         let counter = 0;
         for (let file of this.selectingFiles) {
-            const img = document.createElement("img");
-            const url = img.src = URL.createObjectURL(file);
+            const img = document.createElement("div");
+            img.className = "img";
+
+            const url = URL.createObjectURL(file);
+            img.style.backgroundImage = `url(${url})`;
             
             file.index = counter;
             file.url = url;

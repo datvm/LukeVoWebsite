@@ -1,4 +1,10 @@
-﻿.container-options {
+﻿@mixin backgroundFull {
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.container-options {
     display: flex;
     flex-direction: column;
     height: 100vh;
@@ -10,13 +16,16 @@
         overflow-y: auto;
         text-align: center;
 
-        img {
+        .img {
+            display: inline-block;
             cursor: pointer;
-            height: 200px;
+            width: 320px;
+            height: 180px;
             border: 3px solid transparent;
             transition: all ease-in-out .25s;
-            padding: 2px;
             margin: 5px;
+            max-width: 100%;
+            @include backgroundFull();
 
             &.active {
                 border-color: cornflowerblue;
@@ -36,8 +45,6 @@
         width: 100%;
         height: 100%;
         cursor: none;
-        background-position: center;
-        background-size: contain;
-        background-repeat: no-repeat;
+        @include backgroundFull();
     }
 }

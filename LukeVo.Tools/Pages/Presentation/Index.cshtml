@@ -14,7 +14,7 @@
 <main class="container-fluid">
     <section id="pnl-select-prompt">
         <p class="text-center mt-5">
-            @("Presentation_OpenPrompt".Lookup())
+            <button id="btn-open" class="btn btn-link">@("Presentation_OpenPrompt".Lookup())</button>            
         </p>
     </section>
     <section id="pnl-options" class="container container-options d-none">
@@ -29,13 +29,23 @@
         <div id="lst-preview" class="form-group preview">
             <img />
         </div>
-        <div class="form-group">
-            <button id="btn-slideshow-start" class="btn btn-primary">
-                @("Presentation_ShowFromStart".Lookup())
-            </button>
-            <button id="btn-slideshow-start-current" class="btn btn-primary">
-                @("Presentation_ShowFromCurrent".Lookup())
-            </button>
+        <div class="form-group row">
+            <div class="col-12 col-lg-6">
+                <p>
+                    <button id="btn-slideshow-start" class="btn btn-primary w-100">
+                        @("Presentation_ShowFromStart".Lookup())
+                    </button>
+                </p>
+                
+            </div>
+            <div class="col-12 col-lg-6">
+                <p>
+                    <button id="btn-slideshow-start-current" class="btn btn-primary w-100">
+                        @("Presentation_ShowFromCurrent".Lookup())
+                    </button>
+                </p>
+            </div>
+            
         </div>
     </section>
     <section id="pnl-presentation" class="screen">
