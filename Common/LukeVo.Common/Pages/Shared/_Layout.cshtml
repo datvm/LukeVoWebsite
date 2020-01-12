@@ -22,6 +22,8 @@
     <link rel="stylesheet" href="~/_content/Common/css/common.min.css" asp-append-version="true" />
 
     @await this.RenderSectionAsync("Heads", false)
+
+    <partial name="_GA" />
 </head>
 <body lang="@(System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName)">
 
