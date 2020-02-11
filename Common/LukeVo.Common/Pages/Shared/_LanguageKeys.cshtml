@@ -1,0 +1,6 @@
+﻿@model string[]
+
+@foreach (var item in this.Model)
+{
+    <template data-language-key="@(item)">@(item.LookupHtml())</template>
+}

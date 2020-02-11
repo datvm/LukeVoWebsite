@@ -2,5 +2,9 @@
   {
     "outputFile": "wwwroot/apps/presentation/css/main.css",
     "inputFile": "wwwroot/apps/presentation/css/main.scss"
+  },
+  {
+    "outputFile": "wwwroot/apps/resize/css/main.css",
+    "inputFile": "wwwroot/apps/resize/css/main.scss"
   }
 ]

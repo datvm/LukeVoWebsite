@@ -1,0 +1,29 @@
+﻿body > header {
+  margin-bottom: 1rem; }
+
+gallery {
+  --padding: .5rem;
+  --img-size: 150px;
+  display: block;
+  margin: 1rem 0;
+  white-space: nowrap;
+  overflow-x: scroll;
+  height: calc(var(--padding) * 4 + var(--img-size)); }
+  gallery > item {
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: inline-block;
+    height: var(--img-size);
+    width: var(--img-size);
+    margin-right: .5rem; }
+
+sizes {
+  display: block;
+  padding: .5rem 0; }
+  sizes > size.size {
+    margin: .25rem .75rem;
+    font-size: 1rem; }
+    sizes > size.size i.fa {
+      margin-left: .5rem;
+      cursor: pointer; }

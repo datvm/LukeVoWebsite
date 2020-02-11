@@ -1,0 +1,136 @@
+﻿@page
+
+@functions {
+    static readonly string[] ResizeStrategies = new[]
+    {
+        "Contain", "Cover", "Stretch", "Width", "Height",
+    };
+
+    static readonly string[] OutputTypes = new[]
+    {
+        "Zip", "Files",
+    };
+}
+
+@{
+    this.ViewBag.Title = "BulkResize_Title".Lookup();
+}
+
+@section Heads {
+
+    <link rel="stylesheet" href="~/apps/resize/css/main.min.css" asp-append-version="true" />
+
+}
+
+<section id="section-files" class="card">
+    <header class="card-header">
+        <p>@("BulkResize_FileTitle".Lookup())</p>
+        <p class="card-header-description">@("BulkResize_FileDesc".Lookup())</p>
+    </header>
+    <main class="card-body">
+        <gallery></gallery>
+    </main>
+</section>
+
+<section class="card mt-3">
+    <header class="card-header">
+        <p>@("BulkResize_SizeTitle".Lookup())</p>
+        <p class="card-header-description">@("BulkResize_SizeDesc".Lookup())</p>
+    </header>
+    <main class="card-body">
+        <div class="row">
+            <div class="col-12 col-lg">
+                <form id="frm-new-size">
+                    <div class="row">
+                        <div class="col">
+                            <input id="txt-size-w" type="number" class="form-control" placeholder="@("BulkResize_Width".Lookup())" required min="1" step="1" value="128" />
+                        </div>
+                        <div class="col">
+                            <input id="txt-size-h" type="number" class="form-control" placeholder="@("BulkResize_Height".Lookup())" required min="1" step="1" value="128" />
+                        </div>
+                        <div class="col">
+                            <button id="btn-add-size" class="btn btn-primary w-100" title="@("BulkResize_AddSize".Lookup())">
+                                <i class="fa fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                <sizes>
+
+                </sizes>
+            </div>
+            <div class="col-12 col-lg">
+                <p>
+                    @("BulkResize_RatioDesc".Lookup())
+                    <small>(<a target="_blank" href="/resize/ratio">@("BulkResize_RatioExplain".Lookup())</a>)</small>:
+                </p>
+
+                @foreach (var strat in ResizeStrategies)
+                {
+                    <p>
+                        <label class="w-100">
+                            <input type="radio" value="@(strat)" name="resize-strat" />
+                            @($"BulkResize_Ratio{strat}".Lookup())
+                        </label>
+                    </p>
+                }
+
+                <p></p>
+            </div>
+        </div>
+    </main>
+</section>
+
+<section class="card mt-3">
+    <header class="card-header">
+        <p>@("BulkResize_ProcessTitle".Lookup())</p>
+    </header>
+    <main class="card-body">
+        <div class="row">
+            <div class="col-12 col-lg">
+
+                <div class="form-group">
+                    <p>
+                        <span>@("BulkResize_ProcessFileTitle".Lookup())</span>
+                        <small>@("BulkResize_ProcessFileDesc".Lookup())</small>
+                    </p>
+
+                    <p>
+                        <input id="txt-filename" class="form-control" required />
+                    </p>
+                </div>
+
+                @foreach (var download in OutputTypes)
+                {
+                    <div class="form-group">
+                        <label class="w-100">
+                            <input type="radio" value="@(download)" name="output-type" />
+                            @($"BulkResize_Output{download}".Lookup())
+                        </label>
+                    </div>
+
+                }
+            </div>
+            <div class="col-12 col-lg">
+                <div class="form-group">
+                    <button id="btn-download" class="btn btn-primary btn-lg w-100">
+                        @("BulkResize_ProcessDownload".Lookup())
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+</section>
+
+<input id="txt-files" multiple type="file" accept="image/*" class="d-none" />
+
+<partial name="_LanguageKeys" model="@(new string[] {
+    "BulkResize_Error_FileRequired"
+})" />
+
+@section Scripts {
+
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.2.2/jszip.js" integrity="sha256-bBikss7mndcF6KmskR4ihPSlxoyGAxuG4Gf/rzolOTg=" crossorigin="anonymous"></script>
+    <script type="module" defer src="~/apps/resize/v1/js/main.js" asp-append-version="true"></script>
+
+}

@@ -1,0 +1,74 @@
+﻿@page "/resize/ratio"
+
+@{
+    var title = this.ViewBag.Title = "BulkResize_RE_Title".Lookup();
+}
+
+<style>
+    .demo-img {
+        width: 320px;
+        height: 180px;
+        border: 1px solid black;
+        background-image: url(/apps/resize/img/ratio_explanation.jpg);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
+
+    table td {
+        padding: .5rem 1rem;
+    }
+</style>
+
+<article>
+    <header>
+        <h1>@(title)</h1>
+    </header>
+    <main>
+        <p>@("BulkResize_RE_P1".Lookup())</p>
+        <p>@("BulkResize_RE_E".Lookup()):</p>
+        <p class="text-center">
+            <img src="~/apps/resize/img/ratio_explanation.jpg" />
+        </p>
+
+        <table>
+            <tbody>
+                <tr>
+                    <td>@("BulkResize_RatioContain".Lookup())</td>
+                    <td>
+                        <div class="demo-img" style="background-size: contain"></div>
+                    </td>
+                    <td>@("BulkResize_RE_KeepSize_Desc_Contain".Lookup())</td>
+                </tr>
+                <tr>
+                    <td>@("BulkResize_RatioCover".Lookup())</td>
+                    <td>
+                        <div class="demo-img" style="background-size: cover"></div>
+                    </td>
+                    <td>@("BulkResize_RE_KeepSize_Desc_Cover".Lookup())</td>
+                </tr>
+                <tr>
+                    <td>@("BulkResize_RatioStretch".Lookup())</td>
+                    <td>
+                        <div class="demo-img" style="background-size: 320px 180px;"></div>
+                    </td>
+                    <td>@("BulkResize_RE_KeepSize_Desc_Cover".Lookup())</td>
+                </tr>
+                <tr>
+                    <td>@("BulkResize_RatioWidth".Lookup())</td>
+                    <td>
+                        <div class="demo-img" style="height: 213px;"></div>
+                    </td>
+                    <td>@("BulkResize_RE_KeepRatio_Desc_Width".Lookup())</td>
+                </tr>
+                <tr>
+                    <td>@("BulkResize_RatioHeight".Lookup())</td>
+                    <td>
+                        <div class="demo-img" style="width: 270px;"></div>
+                    </td>
+                    <td>@("BulkResize_RE_KeepRatio_Desc_Height".Lookup())</td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+</article>

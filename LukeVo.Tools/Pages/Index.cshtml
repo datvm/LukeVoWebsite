@@ -1,22 +1,46 @@
 ﻿@page
 
+@functions {
+
+    class ToolLink
+    {
+        public string Name { get; set; }
+        public string Url { get; set; }
+
+        public ToolLink(string name, string url)
+        {
+            this.Name = name;
+            this.Url = url;
+        }
+
+    }
+
+    static readonly ToolLink[] ToolLinks = new[]
+    {
+        new ToolLink("Presentation", "/presentation"),
+        new ToolLink("BulkResize", "/resize"),
+    };
+}
+
 @{
     this.ViewBag.Title = "Home_Title".Lookup();
 }
 
-<div class="row">
-    <div class="col-12 col-lg-4">
-        <div class="card">
-            <div class="card-header">
-                <a href="/presentation">
-                    @("Presentation_Title".Lookup())
-                </a>
-            </div>
-            <div class="card-body">
-                @("Online image presentation viewer.".Lookup())
+<div class="row align-items-stretch">
+    @foreach (var tool in ToolLinks)
+    {
+        <div class="col-12 col-lg-4 mb-1">
+            <div class="card h-100">
+                <div class="card-header">
+                    <a href="@(tool.Url)">
+                        @($"{tool.Name}_Title".Lookup())
+                    </a>
+                </div>
+                <div class="card-body">
+                    @($"{tool.Name}_ShortDesc".Lookup())
+                </div>
             </div>
         </div>
-
-    </div>
+    }
 </div>
 

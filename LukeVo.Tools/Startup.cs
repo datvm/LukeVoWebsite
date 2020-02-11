@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BibliTech.VersionedFileProvider;
 using LukeVo.Tools.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -45,7 +46,13 @@ namespace LukeVo.Tools
             }
 
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
+
+            var versionedFileProvider = new VersionedFileProvider(env.WebRootFileProvider);
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                FileProvider = versionedFileProvider,
+            });
+            env.WebRootFileProvider = versionedFileProvider;
 
             app.UseRouting();
 
