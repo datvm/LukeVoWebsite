@@ -1,0 +1,57 @@
+﻿@page
+
+@{ 
+    this.ViewBag.Title = "Words_Title".Lookup();
+}
+
+@section Heads {
+
+    <link rel="stylesheet" href="~/apps/words/css/words.min.css" asp-append-version="true" />
+
+}
+
+<section class="card">
+    <div class="card-body">
+        <form id="frm-input">
+            <div class="form-group">
+                <p>@("Words_InputInstruction".Lookup())</p>
+                <input id="txt-letters" class="form-control" placeholder="@("Words_InputPlaceholder".Lookup())" required />
+            </div>
+            <div class="form-group text-center">
+                <button class="btn btn-primary" type="submit">
+                    @("Words_LookupButton".Lookup())
+                </button>
+            </div>
+        </form>
+    </div>
+</section>
+
+<section class="card mt-3">
+    <div class="card-body">
+        <div id="loader" class="text-center">
+            <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <div id="pnl-result" class="d-none">
+            <p>
+                <a href="/Words/List" target="_blank">
+                    @("Words_List".Lookup()).
+                </a>
+            </p>
+
+            <p id="lbl-waiting">
+                @("Words_Waiting".Lookup())
+            </p>
+            <div id="lst-result" class="list-words">
+
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+
+    <script defer type="module" src="~/apps/words/js/words.js" asp-append-version="true"></script>
+
+}

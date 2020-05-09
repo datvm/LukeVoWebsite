@@ -34,7 +34,6 @@
     "BulkResize_OutputFiles": "Download individual files",
     "BulkResize_ProcessDownload": "Resize and Download",
     "BulkResize_Error_FileRequired": "Please select at least an image file.",
-
     "BulkResize_RE_Title": "How sizing options work",
     "BulkResize_RE_P1": "When the original photo dimension ratio (width ÷ height) does not match with requested ratio, the selected resize option is used to determine the result.",
     "BulkResize_RE_E": "For example, consider the following photo of 501 ÷ 334px (3 ÷ 2 ratio), being resized into 320 ÷ 180px (16 ÷ 9 ratio)",
@@ -46,5 +45,13 @@
     "BulkResize_RE_KeepRatio_Title": "Keep Ratio options",
     "BulkResize_RE_KeepRatio_Desc": "The Keep Ratio options will not maintain the requested size but instead change either the width or height of the result photo to keep the ratio.",
     "BulkResize_RE_KeepRatio_Desc_Width": "Only honor the requested width and change the height of the result photo.",
-    "BulkResize_RE_KeepRatio_Desc_Height": "Only honor the requested height and change the width of the result photo."
+    "BulkResize_RE_KeepRatio_Desc_Height": "Only honor the requested height and change the width of the result photo.",
+
+    "Words_Title": "English Words Lookup",
+    "Words_ShortDesc": "Look up for English words with specific letters",
+    "Words_InputInstruction": "Enter the letters:",
+    "Words_InputPlaceholder": "E.g. tac or t a c",
+    "Words_LookupButton": "Lookup",
+    "Words_Waiting": "Result will be shown here",
+    "Words_List": "Full Word List"
 }

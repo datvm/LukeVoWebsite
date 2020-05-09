@@ -9,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{A74EAB
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LukeVo.Common", "Common\LukeVo.Common\LukeVo.Common.csproj", "{6830A33E-FEDA-4DAF-8384-1DE671DA444F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LukeVo.Tools", "LukeVo.Tools\LukeVo.Tools.csproj", "{48C2D171-42CF-4CD6-ABBD-BDDD06E9AFAC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LukeVo.Tools", "LukeVo.Tools\LukeVo.Tools.csproj", "{48C2D171-42CF-4CD6-ABBD-BDDD06E9AFAC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

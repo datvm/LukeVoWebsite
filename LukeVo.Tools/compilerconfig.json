@@ -6,5 +6,9 @@
   {
     "outputFile": "wwwroot/apps/resize/css/main.css",
     "inputFile": "wwwroot/apps/resize/css/main.scss"
+  },
+  {
+    "outputFile": "wwwroot/apps/words/css/words.css",
+    "inputFile": "wwwroot/apps/words/css/words.scss"
   }
 ]
