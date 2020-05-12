@@ -79,8 +79,13 @@ class WordsLookup {
         document.querySelector("#frm-input").addEventListener("submit",
             () => this.onFormSubmit());
 
+        window.addEventListener("beforeinstallprompt",
+            () => this.onBeforeInstallPrompt());
+
         await this.loadingPromise;
     }
+
+    onBeforeInstallPrompt() { }
 
     async loadDataAsync() {
         const rawText = await fetch("/Words/List")
@@ -117,7 +122,7 @@ class WordsLookup {
     showList(list) {
         const lst = document.querySelector("#lst-result");
         lst.innerHTML = "";
-        
+
         if (!list.length) {
             return;
         }

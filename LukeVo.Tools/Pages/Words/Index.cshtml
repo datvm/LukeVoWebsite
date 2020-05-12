@@ -1,12 +1,14 @@
 ﻿@page
 
-@{ 
+@{
+    this.Response.Headers.Add("Service-Worker-Allowed", "/words");
     this.ViewBag.Title = "Words_Title".Lookup();
 }
 
 @section Heads {
 
     <link rel="stylesheet" href="~/apps/words/css/words.min.css" asp-append-version="true" />
+    <link rel="manifest" href="~/words/manifest.webmanifest" />
 
 }
 
@@ -52,6 +54,7 @@
 
 @section Scripts {
 
+    <script defer type="module" src="~/words/pwa.js" asp-append-version="true"></script>
     <script defer type="module" src="~/apps/words/js/words.js" asp-append-version="true"></script>
 
 }

@@ -1,0 +1,15 @@
+{
+    "short_name": "Words Lookup",
+    "name": "English Words Lookup",
+    "description": "Look for English words from letters",
+    "icons": [
+        {
+            "src": "/img/icon-words.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ],
+    "start_url": "/words",
+    "display": "standalone",
+    "scope": "/words"
+}
