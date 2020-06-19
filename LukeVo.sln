@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LukeVo.Common", "Common\Luk
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LukeVo.Tools", "LukeVo.Tools\LukeVo.Tools.csproj", "{48C2D171-42CF-4CD6-ABBD-BDDD06E9AFAC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LukeVo.Games", "LukeVo.Games\LukeVo.Games.csproj", "{82CF456D-2116-404C-96DA-CBE5D63C5279}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,10 @@ Global
 		{48C2D171-42CF-4CD6-ABBD-BDDD06E9AFAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{48C2D171-42CF-4CD6-ABBD-BDDD06E9AFAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{48C2D171-42CF-4CD6-ABBD-BDDD06E9AFAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82CF456D-2116-404C-96DA-CBE5D63C5279}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82CF456D-2116-404C-96DA-CBE5D63C5279}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82CF456D-2116-404C-96DA-CBE5D63C5279}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82CF456D-2116-404C-96DA-CBE5D63C5279}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

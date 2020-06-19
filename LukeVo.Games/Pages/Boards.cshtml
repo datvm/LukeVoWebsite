@@ -1,0 +1,50 @@
+﻿@page "/board/{id}"
+
+@{
+    this.ViewBag.Title = "Board";
+
+    var id = this.RouteData.Values["id"].ToString();
+}
+
+@section Heads {
+
+    <link rel="stylesheet" href="~/apps/board/css/board.min.css" asp-append-version="true" />
+
+} 
+
+<div class="container" data-id="@(id)">
+    <div class="min-100vh d-flex flex-column">
+        <h1>Board</h1>
+
+        <div class="row">
+            <div class="col">
+                <p>Players and Score:</p>
+                <div id="lst-players"></div>
+            </div>
+            <div class="col text-center">
+                <p>0 - 79: Score x1</p>
+                <p>80 - 94: Score x2</p>
+                <p>95+: Score x3</p>
+            </div>
+            <div class="col text-center">
+                <p>Current Numbers:</p>
+                <h2 id="lbl-current" class="d-none">-1</h2>
+                <p>
+                    <button id="btn-start" class="btn btn-primary">Start Game</button>
+                </p>
+            </div>
+        </div>
+
+        <div class="game-board">
+            <table class="table table-bordered">
+                <tbody id="board"></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+
+    <script defer type="module" src="~/apps/board/js/game.js" asp-append-version="true"></script>
+
+}

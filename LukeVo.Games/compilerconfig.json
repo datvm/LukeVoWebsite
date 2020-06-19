@@ -1,0 +1,14 @@
+﻿[
+  {
+    "outputFile": "wwwroot/css/common.css",
+    "inputFile": "wwwroot/css/common.scss"
+  },
+  {
+    "outputFile": "wwwroot/apps/numbers/css/board.css",
+    "inputFile": "wwwroot/apps/numbers/css/board.scss"
+  },
+  {
+    "outputFile": "wwwroot/apps/board/css/board.css",
+    "inputFile": "wwwroot/apps/board/css/board.scss"
+  }
+]

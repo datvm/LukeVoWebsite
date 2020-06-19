@@ -1,0 +1,22 @@
+﻿.game-board {
+    position: relative;
+    border: 1px solid black;
+    background: #c7c7c7;
+    flex-grow: 1;
+    margin-bottom: 1rem;
+
+    > span {
+        position: absolute;
+        cursor: pointer;
+        font-family: 'Arial Rounded MT';
+
+
+        &:hover {
+            color: cornflowerblue;
+        }
+
+        &.done {
+            color: pink;
+        }
+    }
+}

@@ -1,0 +1,1 @@
+﻿.game-board{position:relative;border:1px solid #000;background:#c7c7c7;flex-grow:1;margin-bottom:1rem;}.game-board>span{position:absolute;cursor:pointer;font-family:'Arial Rounded MT';}.game-board>span:hover{color:#6495ed;}.game-board>span.done{color:#ffc0cb;}

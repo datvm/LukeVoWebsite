@@ -1,0 +1,16 @@
+﻿.game-board {
+  flex-grow: 1;
+  margin-bottom: 1rem; }
+  .game-board td {
+    cursor: pointer;
+    vertical-align: middle;
+    text-align: center;
+    transition: all ease-in-out .3s; }
+    .game-board td:hover {
+      font-weight: bolder; }
+    .game-board td.done-0 {
+      background: cornflowerblue;
+      color: white; }
+    .game-board td.done-1 {
+      background: chocolate;
+      color: white; }
