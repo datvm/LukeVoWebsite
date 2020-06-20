@@ -59,26 +59,28 @@
                 const index = p.index;
                 this.lblPlayerNames[index].innerHTML = p.name;
 
-                if (r.started && r.currentPlayerTurn == index) {
-                    this.lblPlayerTurns[index].classList.remove("d-none");
-                }
+                if (r.started) {
+                    if (r.currentPlayerTurn == index) {
+                        this.lblPlayerTurns[index].classList.remove("d-none");
+                    }
 
-                const board = r.boards[index];
-                const boardEl = this.boards[index];
+                    const board = r.boards[index];
+                    const boardEl = this.boards[index];
 
-                for (let x = 0; x < board.length; x++) {
-                    const col = board[x];
-                    const colEl = boardEl[x];
+                    for (let x = 0; x < board.length; x++) {
+                        const col = board[x];
+                        const colEl = boardEl[x];
 
-                    for (let y = 0; y < col.length; y++) {
-                        const cell = col[y];
-                        const cellEl = colEl[y];
+                        for (let y = 0; y < col.length; y++) {
+                            const cell = col[y];
+                            const cellEl = colEl[y];
 
-                        if (cell.fired) {
-                            if (cell.hit) {
-                                cellEl.classList.add("fire");
-                            } else {
-                                cellEl.classList.add("miss");
+                            if (cell.fired) {
+                                if (cell.hit) {
+                                    cellEl.classList.add("fire");
+                                } else {
+                                    cellEl.classList.add("miss");
+                                }
                             }
                         }
                     }
