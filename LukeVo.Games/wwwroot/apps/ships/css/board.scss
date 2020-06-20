@@ -1,0 +1,60 @@
+﻿.game-boards {
+    flex-grow: 1;
+
+    .col {
+        margin-right: .5rem;
+    }
+
+    .game-board {
+        display: flex;
+
+        .ship {
+            display: none;
+        }
+
+        &.owner {
+            .has-ship .icon-ship {
+                display: inherit;
+            }
+        }
+
+        .cell {
+            position: relative;
+            border: 1px solid #e8e8e8;
+            transition: all ease-in-out .3s;
+            cursor: pointer;
+            background-color: #1CA3EC;
+
+            &:hover {
+                background-color: #0F5E9C;
+            }
+
+            .icon {
+                position: absolute;
+                left: 5px;
+                top: 5px;
+                bottom: 5px;
+                right: 5px;
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+                display: none;
+
+                &.icon-ship,
+                &.icon-cross {
+                    z-index: 2;
+                }
+
+                &.icon-fire {
+                    z-index: 3;
+                }
+            }
+
+            &.miss .icon-cross,
+            &.fire .icon-fire, 
+            &.fire .icon-ship {
+                display: inherit;
+            }
+        }
+    }
+}

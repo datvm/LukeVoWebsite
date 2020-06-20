@@ -1,0 +1,30 @@
+﻿@page "/ships"
+
+@{
+    this.ViewBag.Title = "Ships";
+}
+
+<div class="container">
+    <h1>Ships</h1>
+
+    <div class="form-group">
+        <label>Enter game ID:</label>
+        <input type="text" id="txt-id" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Enter your name:</label>
+        <input type="text" id="txt-name" class="form-control" />
+    </div>
+
+    <div class="form-group text-center">
+        <button id="btn-join" class="btn btn-primary">Join</button>
+    </div>
+</div>
+
+
+@section Scripts {
+
+    <script defer type="module" src="~/apps/ships/js/landing.js" asp-append-version="true"></script>
+
+} 

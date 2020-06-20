@@ -1,0 +1,57 @@
+﻿@page "/ships/{id}"
+
+@{
+    this.ViewBag.Title = "Ships";
+
+    var id = this.RouteData.Values["id"].ToString();
+}
+
+@section Heads {
+
+    <link rel="stylesheet" href="~/apps/ships/css/board.min.css" asp-append-version="true" />
+
+}
+
+<div class="container" data-id="@(id)">
+    <div class="min-100vh d-flex flex-column">
+        <h1>Ships</h1>
+
+        <h2 id="lbl-finished" class="d-none">Game Finished!</h2>
+
+        <p>
+            <button id="btn-start" class="btn btn-primary">Start</button>
+        </p>
+
+        <div class="row">
+            <div class="col">
+                <p>
+                    Players 1:
+                    <span data-pname="0"></span>
+                    <span class="text-info" data-pturn="0">(Your Turn)</span>
+                </p>
+            </div>
+            <div class="col">
+                <p>
+                    Players 2:
+                    <span data-pname="1"></span>
+                    <span class="text-info" data-pturn="1">(Your Turn)</span>
+                </p>
+            </div>
+        </div>
+
+        <div class="row game-boards">
+            <div class="col" data-board="0"></div>
+            <div class="col" data-board="1"></div>
+        </div>
+    </div>
+</div>
+
+<link id="lnk-ship" rel="preload" as="image" href="~/apps/ships/img/ship.png" asp-append-version="true" />
+<link id="lnk-fire" rel="preload" as="image" href="~/apps/ships/img/fire.png" asp-append-version="true" />
+<link id="lnk-cross" rel="preload" as="image" href="~/apps/ships/img/cross.png" asp-append-version="true" />
+
+@section Scripts {
+
+    <script defer type="module" src="~/apps/ships/js/game.js" asp-append-version="true"></script>
+
+}

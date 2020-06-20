@@ -10,5 +10,9 @@
   {
     "outputFile": "wwwroot/apps/board/css/board.css",
     "inputFile": "wwwroot/apps/board/css/board.scss"
+  },
+  {
+    "outputFile": "wwwroot/apps/ships/css/board.css",
+    "inputFile": "wwwroot/apps/ships/css/board.scss"
   }
 ]
