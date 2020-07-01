@@ -1,4 +1,5 @@
-﻿using LukeVo.Games.Models.Board;
+﻿using LukeVo.Games.Models.Blackjack;
+using LukeVo.Games.Models.Board;
 using LukeVo.Games.Models.Ships;
 using System;
 using System.Collections.Concurrent;
@@ -10,6 +11,7 @@ namespace LukeVo.Games.Models.Numbers
 {
     public interface IGameManager
     {
+        BlackjackGameSession GetBlackjack(string id);
         BoardGameSession GetBoard(string id);
         NumbersGameSession GetNumbers(string id);
         ShipsGameSession GetShips(string id);
@@ -21,6 +23,7 @@ namespace LukeVo.Games.Models.Numbers
         ConcurrentDictionary<string, NumbersGameSession> Numbers { get; set; } = new ConcurrentDictionary<string, NumbersGameSession>();
         ConcurrentDictionary<string, BoardGameSession> Board { get; set; } = new ConcurrentDictionary<string, BoardGameSession>();
         ConcurrentDictionary<string, ShipsGameSession> Ships { get; set; } = new ConcurrentDictionary<string, ShipsGameSession>();
+        ConcurrentDictionary<string, BlackjackGameSession> Blackjack { get; set; } = new ConcurrentDictionary<string, BlackjackGameSession>();
 
         public NumbersGameSession GetNumbers(string id)
         {
@@ -44,6 +47,14 @@ namespace LukeVo.Games.Models.Numbers
                 this.Ships,
                 id,
                 () => new ShipsGameSession(id));
+        }
+
+        public BlackjackGameSession GetBlackjack(string id)
+        {
+            return this.GetGameSession(
+                this.Blackjack,
+                id,
+                () => new BlackjackGameSession(id));
         }
 
         T GetGameSession<T>(ConcurrentDictionary<string, T> sessions, string id, Func<T> createFunc)

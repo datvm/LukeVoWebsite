@@ -64,6 +64,11 @@ namespace LukeVo.Games.Models
             });
         }
 
+        public GamePlayer GetPlayer(int id)
+        {
+            return this.Players.FirstOrDefault(q => q.Value.Index == id).Value;
+        }
+
     }
 
 
