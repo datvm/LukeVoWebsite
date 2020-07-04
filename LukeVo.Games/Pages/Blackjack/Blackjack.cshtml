@@ -1,0 +1,63 @@
+﻿@page "/blackjack/{id}"
+
+@{
+    this.ViewBag.Title = "Blackjack";
+
+    var id = this.RouteData.Values["id"].ToString();
+}
+
+@section Heads {
+
+    <link rel="stylesheet" href="~/apps/blackjack/css/board.min.css" asp-append-version="true" />
+
+}
+
+<div class="container" data-id="@(id)">
+    <div class="min-100vh d-flex flex-column">
+        <h1>Blackjack</h1>
+        <p>
+            <button id="btn-start" class="btn btn-primary">Start Game</button>
+        </p>
+
+        <div id="lst-players">
+
+        </div>
+    </div>
+</div>
+
+
+<template id="template-player">
+    <div class="player">
+        <h2 class="name"></h2>
+        <p>
+            Your score:
+            <span class="score"></span>
+            <span class="text-info turn">(Your Turn)</span>
+        </p>
+
+        <h3 class="reveal-only">
+            Total:
+            <span class="hand-count"></span>
+        </h3>
+        
+        <p class="playing-only">
+            <button class="btn btn-primary" data-action="deal">Draw More</button>
+            <button class="btn btn-primary" data-action="lock">Done!</button>
+        </p>
+
+        <div class="card-container"></div>
+    </div>
+</template>
+
+<template id="template-card">
+    <div class="card">
+        <div class="cover"></div>
+    </div>
+</template>
+
+@section Scripts {
+
+    <script defer type="module" src="~/js/common.js" asp-append-version="true"></script>
+    <script defer type="module" src="~/apps/blackjack/js/game.js" asp-append-version="true"></script>
+
+}

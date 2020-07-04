@@ -14,5 +14,9 @@
   {
     "outputFile": "wwwroot/apps/ships/css/board.css",
     "inputFile": "wwwroot/apps/ships/css/board.scss"
+  },
+  {
+    "outputFile": "wwwroot/apps/blackjack/css/board.css",
+    "inputFile": "wwwroot/apps/blackjack/css/board.scss"
   }
 ]

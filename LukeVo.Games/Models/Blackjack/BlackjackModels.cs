@@ -1,17 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace LukeVo.Games.Models.Blackjack
 {
     public class BlackjackGameSession : DefaultGameSession
     {
-
+        [JsonIgnore]
         public CardManager Cards { get; private set; } = new CardManager();
 
         public List<Card>[] PlayerCards { get; private set; }
-        public int PlayerTurn { get; private set; }
+        public int PlayerTurn { get; private set; } = -1;
         public int Round { get; private set; }
 
         public bool IsRevealing { get; private set; }
@@ -52,8 +53,7 @@ namespace LukeVo.Games.Models.Blackjack
                 var playerCards = this.PlayerCards[player];
                 playerCards.Add(this.Cards.Deal());
 
-                var hand = this.CountHand(playerCards);
-                if (hand.Count >= 21)
+                if (this.ShouldAutoSkip(playerCards))
                 {
                     this.NextPlayer();
                 }
@@ -76,6 +76,7 @@ namespace LukeVo.Games.Models.Blackjack
         public async void NextPlayer()
         {
             this.PlayerTurn++;
+
 
             if (this.PlayerTurn >= this.Players.Count)
             {
@@ -116,8 +117,16 @@ namespace LukeVo.Games.Models.Blackjack
 
                 this.IsRevealing = true;
 
-                await Task.Delay(5000);
+                await Task.Delay(10000);
                 this.IsRevealing = false;
+                this.StartRound();
+            }
+            else
+            {
+                if (this.ShouldAutoSkip(this.PlayerCards[this.PlayerTurn]))
+                {
+                    this.NextPlayer();
+                }
             }
         }
 
@@ -129,16 +138,37 @@ namespace LukeVo.Games.Models.Blackjack
             this.Cards.Clear();
             this.Cards.Add(1, true);
 
+            for (int i = 0; i < this.PlayerCards.Length; i++)
+            {
+                this.PlayerCards[i] = new List<Card>();
+            }
+
             foreach (var player in this.PlayerCards)
             {
                 for (int i = 0; i < 2; i++)
                 {
                     player.Add(this.Cards.Deal());
-                    player.Add(this.Cards.Deal());
                 }
             }
 
-            this.PlayerTurn = 0;
+            this.PlayerTurn = -1;
+            this.NextPlayer();
+        }
+
+        bool ShouldAutoSkip(List<Card> cards)
+        {
+            if (cards.Count == 5)
+            {
+                return true;
+            }
+
+            var hand = this.CountHand(cards);
+            if (hand.Count >= 21)
+            {
+                return true;
+            }
+
+            return false;
         }
 
         public HandResult CountHand(List<Card> cards)
@@ -150,8 +180,8 @@ namespace LukeVo.Games.Models.Blackjack
             {
                 if (card.Num == 1)
                 {
-                    total += 10;
-                    aceCount += 9;
+                    total += 11;
+                    aceCount += 10;
                 }
                 else if (card.Num > 10)
                 {
@@ -164,8 +194,8 @@ namespace LukeVo.Games.Models.Blackjack
 
                 if (total > 21 && aceCount > 0)
                 {
-                    total -= 9;
-                    aceCount -= 9;
+                    total -= 10;
+                    aceCount -= 10;
                 }
             }
 

@@ -1,0 +1,55 @@
+﻿@mixin fullBackground() {
+    background-image: url(/img/cards/cardBack_blue1.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.card {
+    position: relative;
+    display: inline-block;
+    margin-right: 1rem;
+    width: 140px;
+    height: 190px;
+    @include fullBackground();
+
+    .cover {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+
+        @include fullBackground();
+        z-index: 10;
+    }
+
+    &.reveal .cover {
+        display: none !important;
+    }
+}
+
+.card-container {
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+.reveal-only, .playing-only {
+    visibility: hidden
+}
+
+.reveal {
+    .reveal-only {
+        visibility: visible;
+    }
+
+    .card .cover {
+        display: none !important;
+    }
+}
+
+.playing {
+    .playing-only {
+        visibility: visible;
+    }
+}

@@ -9,13 +9,13 @@ namespace LukeVo.Games.Models
     public class CardManager
     {
 
-        public Stack<Card> Cards { get; private set; }
+        public Stack<Card> Cards { get; private set; } = new Stack<Card>();
 
         public void Add(int deck, bool shuffleAfterAdd)
         {
             for (int i = 0; i < deck; i++)
             {
-                for (int num = 0; num < 14; num++)
+                for (int num = 1; num < 14; num++)
                 {
                     for (int suit = 0; suit < 4; suit++)
                     {
